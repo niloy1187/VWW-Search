@@ -2,10 +2,11 @@
 export type SearchCategory = 'stays' | 'flights' | 'rentals' | 'activities' | 'packages';
 
 export interface BookingOption {
-  provider: string;
+  provider: string; // e.g. "Agoda", "Booking.com"
   price: string; // e.g. "₹4,500"
   originalPrice?: string; // For strikethrough "₹6,000"
   discount?: string; // "25% OFF"
+  link?: string;
 }
 
 export interface BaseResult {
@@ -17,6 +18,7 @@ export interface BaseResult {
   groundingUrl?: string;
   bookingOptions: BookingOption[];
   bestPrice?: number;
+  marketPrice?: string; // e.g. "₹6,000" (Average price for comparison)
   
   // VFM Specifics
   vfmScore: number;
@@ -126,6 +128,7 @@ export interface SearchParams {
   // Filters
   squadTrip: boolean;
   workation: boolean;
+  vwwRecommended: boolean; // Exclusive VFM filter
   vibe?: string;
 }
 
